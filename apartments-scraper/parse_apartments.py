@@ -58,7 +58,6 @@ def create_csv(page_url, map_info, fname, pscores):
 
 def write_parsed_to_csv(page_url, map_info, writer, pscores):
     """Given the current page URL, extract the information from each apartment in the list"""
-
     # read the current page
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
     page = requests.get(page_url, headers=headers)
@@ -127,6 +126,7 @@ def write_parsed_to_csv(page_url, map_info, writer, pscores):
         return
 
     # recurse until the last page
+    print(i)
     write_parsed_to_csv(next_url, map_info, writer, pscores)
 
 
@@ -392,7 +392,9 @@ def get_distance_duration(map_info, fields):
     origin = map_info['target_address'].replace(' ', '+')
     destination = fields['address'].replace(' ', '+')
     map_url = map_info['maps_url'] + '&origins=' + origin + '&destinations=' + \
-        destination + '&arrival_time=' + map_info['morning']
+        destination
+
+    print(map_url)
 
     # populate the distance / duration fields for morning
     travel_morning = get_travel_time(map_url)
@@ -401,17 +403,22 @@ def get_distance_duration(map_info, fields):
     origin = fields['address'].replace(' ', '+')
     destination = map_info['target_address'].replace(' ', '+')
     map_url = map_info['maps_url'] + '&origins=' + origin + '&destinations=' + \
-        destination + '&departure_time=' + map_info['evening']
+        destination
 
+    print(map_url)
     # populate the distance / duration fields for evening
     travel_evening = get_travel_time(map_url)
+
 
     # take the average
     fields['distance'] = average_field(travel_morning, travel_evening, 'distance')
     fields['duration'] = average_field(travel_morning, travel_evening, 'duration')
 
+
 def average_field(obj1, obj2, field):
     """Take the average given two objects that have field values followed by (same) unit"""
+    print(obj1)
+    print(obj2)
     val1 = float(prettify_text(obj1[field]).split()[0])
     val2 = float(prettify_text(obj2[field]).split()[0])
     unit = ' ' + prettify_text(obj1[field]).split()[1]
@@ -430,7 +437,7 @@ def get_travel_time(map_url):
 
     # read and parse the google maps distance / duration from the api
     response = requests.get(map_url).json()
-    
+
     # the status might not be OK, ignore this in that case
     if response['status'] == 'OK':
         response = response['rows'][0]['elements'][0]
