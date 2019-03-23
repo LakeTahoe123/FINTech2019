@@ -126,7 +126,6 @@ def write_parsed_to_csv(page_url, map_info, writer, pscores):
         return
 
     # recurse until the last page
-    print(i)
     write_parsed_to_csv(next_url, map_info, writer, pscores)
 
 
