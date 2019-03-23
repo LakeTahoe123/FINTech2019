@@ -92,6 +92,7 @@ def write_parsed_to_csv(page_url, map_info, writer, pscores):
         fields = parse_apartment_information(url, map_info)
 
         # make this wiki markup
+
         fields['name'] = '[' + fields['name'] + '](' + url + ')'
         fields['address'] = '[' + fields['address'] + '](' + fields['map'] + ')'
 
@@ -226,7 +227,7 @@ def prettify_text(data):
     # format it nicely: encode it, removing special symbols
     data = data.encode('utf8', 'ignore')
 
-    return str(data).decode('utf8').encode('unicode_escape')
+    return data.decode('utf8')
 
 
 def get_images(soup, fields):
