@@ -18,7 +18,6 @@
 							>
 								<b-form-input id="searchbar" v-model="name" trim/>
 							</b-form-group>
-							{{name}}
 						</b-col>
 					</b-row>
 				</b-col>
@@ -52,3 +51,11 @@ export default {
 	}
 };
 </script>
+
+<style>
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#app #map {
+	height: 100%;
+}
+</style>

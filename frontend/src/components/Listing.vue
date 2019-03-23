@@ -1,17 +1,26 @@
 <template>
 	<div class="listing">
-		<b-card-group deck>
+		<b-container>
 			<b-row no-gutters v-for="listing in listings" :key="listing.id">
 				<b-col md="12">
-					<b-card :title="listing.title" :img-src="listing.img_src" img-alt="Image" img-top>
-						<b-card-text>{{listing.description}}</b-card-text>
-						<div slot="footer">
-							<small class="text-muted">Last updated 3 mins ago</small>
-						</div>
+					<b-card>
+						<b-container fluid>
+							<b-row>
+								<b-col style="width:auto;">
+									<img :src="listing.img_src" img-alt="Image" style="height: 200px; width: 300px;">
+								</b-col>
+								<b-col>
+									<b-card-text>{{listing.description}}</b-card-text>
+									<div slot="footer">
+										<small class="text-muted">Last updated 3 mins ago</small>
+									</div>
+								</b-col>
+							</b-row>
+						</b-container>
 					</b-card>
 				</b-col>
 			</b-row>
-		</b-card-group>
+		</b-container>
 	</div>
 </template>
 
