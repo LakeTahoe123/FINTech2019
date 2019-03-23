@@ -1,16 +1,14 @@
 <template>
-	<b-container fluid id="app">
-		<b-row>
-			<navbar/>
-		</b-row>
-		<b-container>
+	<div id="app">
+		<navbar/>
+		<b-container fluid>
 			<b-row>
 				<b-col>
 					<router-view/>
 				</b-col>
 			</b-row>
 		</b-container>
-	</b-container>
+	</div>
 </template>
 
 <script>

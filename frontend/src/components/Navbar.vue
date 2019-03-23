@@ -1,5 +1,5 @@
 <template>
-	<b-navbar fluid toggleable="md" type="dark" variant="info">
+	<b-navbar fill toggleable="md" type="dark" variant="info">
 		<b-navbar-brand :to="{ name: 'Home' }">Account-Owner Home</b-navbar-brand>
 		<b-navbar-nav>
 			<b-nav-item to="/">Home</b-nav-item>
