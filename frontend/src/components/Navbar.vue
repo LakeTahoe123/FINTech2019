@@ -1,7 +1,5 @@
 <template>
-	<b-navbar fill toggleable="md" type="dark" variant="primary">
-		<b-navbar-brand :to="{ name: 'Home' }">MENU</b-navbar-brand>
-
+	<b-navbar fill toggleable="md" type="dark" variant="custom" style="background-color: #2C3840">
 		<b-navbar-nav>
 			<b-nav-item to="/">Home</b-nav-item>
 			<b-nav-item to="/about">About</b-nav-item>
