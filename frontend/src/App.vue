@@ -1,13 +1,7 @@
 <template>
 	<div id="app">
 		<navbar/>
-		<b-container fluid>
-			<b-row>
-				<b-col>
-					<router-view/>
-				</b-col>
-			</b-row>
-		</b-container>
+		<router-view/>
 	</div>
 </template>
 
@@ -29,5 +23,10 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
+}
+
+#app .container-fluid {
+	padding-left: 0;
+	padding-right: 0;
 }
 </style>
