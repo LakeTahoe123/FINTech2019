@@ -1,22 +1,21 @@
-import csv
+import csv, json
 
 fd = open('output.csv')
 data = list(csv.reader(fd))
 
-output = []
-titles = True
-for i in range(len(data)):
-	if titles:
-		titles = False
-		continue
-
-	listing = []
+output = {}
+for i in range(1, len(data)):
+	listing = {}
+	###listing['id'] = i - 1
 	addr = data[i][2] #address
 	addr = addr[addr.find('[')+1 : addr.find(']')]
-	listing.append(addr)
-	listing.append(data[i][4]) #rent
-	listing.append(data[i][8]) #distance
-	listing.append(data[i][9]) #time
-	output.append(listing)
+	listing['address'] = addr
+	listing['rent'] = data[i][4]
+	listing['distance'] = data[i][8]
+	listing['time'] = data[i][9]
+	url = data[i][21] #picture url
+	listing['picture_url'] = url[url.find('(')+1 : url.find(')')]
+	output[i - 1] = listing
 
-print(len(output))
+with open('list.json', 'w') as fd:
+	fd.write(json.dumps(output))
