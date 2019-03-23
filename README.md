@@ -1,4 +1,4 @@
-# lfghacks
+# Fintech Hackathon Project 2019
 
 ## Project setup
 ```
