@@ -8,6 +8,7 @@
 							<b-form-group id="salary" label="Expected Salary" label-for="salary">
 								<b-form-input id="salary" v-model="salary" trim/>
 							</b-form-group>
+
 							<b-form-group id="searchbar" label="Search for Listings" label-for="searchbar">
 								<b-form-input id="searchbar" v-model="location" trim/>
 							</b-form-group>
