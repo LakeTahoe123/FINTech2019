@@ -42,7 +42,7 @@
 export default {
 	computed: {
 		filterhate: function () {
-			if (this.$parent.location.toLowerCase() == "Citibank NYC".toLowerCase() || this.$parent.location.toLowerCase() == "New York City".toLowerCase())
+			if (this.$parent.location.toLowerCase() == "Empire State Building".toLowerCase() || this.$parent.location.toLowerCase() == "New York City".toLowerCase())
 			{
 			return Object.values(this.ihatethissomuch).filter(function(listing) { return listing.picture_url != ""}).slice(0, 25);
 			}
