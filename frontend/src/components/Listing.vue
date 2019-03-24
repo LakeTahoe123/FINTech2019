@@ -3,7 +3,7 @@
 		<b-container v-if="filterhate">
 			<b-row no-gutters v-for="listing in filterhate" :key="listing.id">
 				<b-col md="12">
-					<b-card v-on:click="$router.go('/about')" class="hoverboi">
+					<b-card v-on:click="$router.push('/about')" class="hoverboi">
 						<b-container fluid>
 							<b-row>
 								<b-col md="auto">
@@ -15,10 +15,8 @@
 								</b-col>
 								<b-col>
 									<h3>{{listing.address}}</h3>
-									<b-card-text>{{fixmiles(listing.distance)}} from your work!</b-card-text>
-									<div slot="footer">
-										<small class="text-muted">Last updated 3 mins ago</small>
-									</div>
+									<b-card-text>{{listing.rent}} per month</b-card-text>
+									<b-card-text>{{fixmiles(listing.distance)}} ({{listing.time}}) from your work!</b-card-text>
 								</b-col>
 							</b-row>
 						</b-container>
@@ -44,8 +42,10 @@
 export default {
 	computed: {
 		filterhate: function () {
+			if (this.$parent.location == "New York City")
+			{
 			return Object.values(this.ihatethissomuch).filter(function(listing) { return listing.picture_url != ""}).slice(0, 25);
-
+			}
 			return [];
 		},
 		
