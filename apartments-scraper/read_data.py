@@ -4,18 +4,41 @@ fd = open('output.csv')
 data = list(csv.reader(fd))
 
 output = {}
-for i in range(1, len(data)):
+counter = 1
+index = 0
+while counter < len(data):
+	add = True
 	listing = {}
-	###listing['id'] = i - 1
-	addr = data[i][2] #address
+	addr = data[counter][2] #address
 	addr = addr[addr.find('[')+1 : addr.find(']')]
 	listing['address'] = addr
-	listing['rent'] = data[i][4]
-	listing['distance'] = data[i][8]
-	listing['time'] = data[i][9]
-	url = data[i][21] #picture url
-	listing['picture_url'] = url[url.find('(')+1 : url.find(')')]
-	output[i - 1] = listing
+	rent = data[counter][4].split() #rent
+	if type(rent) == list and len(rent) == 3:
+		try:
+			rent = int(rent[0][1:].replace(',', ''))
+		except:
+			add = False
+	elif len(rent) == 1:
+		try:
+			rent = int(rent[0][1:].replace(',', ''))
+		except:
+			add = False
+		rent_max = 0
+	else:
+		print('Edge case at index: %s' % i)
+	listing['rent'] = rent
+	listing['distance'] = round(float(data[counter][8].split()[0]), 2)
+	listing['time'] = int(data[counter][9].split()[0])
+	url = data[counter][21] #picture url
+	listing['img_url'] = url[url.find('(')+1 : url.find(')')]
+	if add:
+		output[index] = listing
+		index += 1
+		counter += 1
+	else:
+		counter += 1
 
 with open('list.json', 'w') as fd:
 	fd.write(json.dumps(output))
+
+print(len(output))

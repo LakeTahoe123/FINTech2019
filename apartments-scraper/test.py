@@ -6,9 +6,17 @@ data = list(csv.reader(fd))
 addr = data[5][2] #address
 address = addr[addr.find("[")+1:addr.find("]")]
 print(address)
-print(data[5][4]) #rent
-print(data[5][8]) #distance
-print(data[5][9]) #time
+rent = data[5][4].split()) #rent
+if len(rent) == 3:
+	rent_min = int(rent[0][1:])
+	rent_max = int(rent[2])
+elif len(rent) == 1:
+	rent_min = int(rent[1:])
+	rent_max = 0
+else:
+	print('Edge case at index: ')
+print(float(data[5][8])) #distance
+print(int(data[5][9])) #time
 print(data[5][21]) #picture url
 
 s = data[5][21]
