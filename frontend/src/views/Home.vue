@@ -5,18 +5,11 @@
 				<b-col md="3">
 					<b-row>
 						<b-col style="padding: 20px;">
-							<h1>
-								I made this
-								<b>Vue</b> App
-							</h1>
-
-							<b-form-group
-								id="searchbar"
-								description="Search for Listings"
-								label="Search for Listings"
-								label-for="searchbar"
-							>
-								<b-form-input id="searchbar" v-model="name" trim/>
+							<b-form-group id="searchbar" label="Search for Listings" label-for="searchbar">
+								<b-form-input id="searchbar" v-model="location" trim/>
+							</b-form-group>
+							<b-form-group id="salary" label="Expected Salary" label-for="salary">
+								<b-form-input id="salary" v-model="salary" trim/>
 							</b-form-group>
 						</b-col>
 					</b-row>
@@ -46,7 +39,8 @@ export default {
 	},
 	data() {
 		return {
-			name: ""
+			location: "",
+			salary: ""
 		};
 	}
 };
