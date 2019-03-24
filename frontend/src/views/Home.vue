@@ -5,11 +5,11 @@
 				<b-col md="3">
 					<b-row>
 						<b-col style="padding: 20px;">
-							<b-form-group id="searchbar" label="Search for Listings" label-for="searchbar">
-								<b-form-input id="searchbar" v-model="location" trim/>
-							</b-form-group>
 							<b-form-group id="salary" label="Expected Salary" label-for="salary">
 								<b-form-input id="salary" v-model="salary" trim/>
+							</b-form-group>
+							<b-form-group id="searchbar" label="Search for Listings" label-for="searchbar">
+								<b-form-input id="searchbar" v-model="location" trim/>
 							</b-form-group>
 						</b-col>
 					</b-row>
